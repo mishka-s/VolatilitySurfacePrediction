@@ -73,7 +73,7 @@ The framework dynamically identifies core structural markers. Your input file sh
 Run the production pipeline script directly:
 ```bash
 python main.py
-
+```
 
 
 ## Deployment & Usage
@@ -82,3 +82,15 @@ python main.py
 Ensure your environment satisfies the required scientific computing stack:
 ```bash
 pip install numpy pandas scipy
+```
+
+### Outputs
+Upon processing, the architecture exports two distinct files to the working directory:
+
+1. **`filled_dataset.csv`**: A dense matrix matching the original dataframe shape where all missing elements are fully populated and string representations of time are unified under the `%d-%m-%Y %H:%M` convention.
+2. **`submission.csv`**: A flattened key-value pairing designed for immediate submission or downstream calculation engines, pairing unique identifiers with their respective optimized implied volatility predictions:
+
+```csv
+id,value
+27-01-2026 09:15||NIFTY26JAN2723100CE,0.1425
+27-01-2026 09:15||NIFTY26JAN2723100PE,0.1182
